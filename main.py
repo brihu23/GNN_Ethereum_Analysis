@@ -24,7 +24,10 @@ with open('./MulDiGraph_subgraph.pkl', 'wb') as f:
 print('Subgraph saved.')
 
 
-
-
+# TODO: Choose Ethereum labels and get associated wallets/accounts
+# TODO: Add Ethereum labels to the subgraph (pick more than what they just did in the paper)
+# TODO: Get transaction hash for each edge --> save in CSV file
+# TODO: Get transaction value and other metadata for each edge in each edge --> save in CSV file and add to subgraph at runtime
+# TODO: Run GNN pipeline on the subgraph as shown in paper
 
 print('Done.')
