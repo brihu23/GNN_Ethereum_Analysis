@@ -5,9 +5,9 @@ from keras.models import Model
 from keras.optimizers import Adam
 from keras.regularizers import l2
 
-from rgcn.layers.graph import GraphConvolution
-from rgcn.layers.input_adj import InputAdj
-from rgcn.utils import *
+from graph import GraphConvolution
+from input_adj import InputAdj
+from utils import *
 
 import pickle as pkl
 
