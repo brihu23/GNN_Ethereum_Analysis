@@ -9,6 +9,7 @@ To get setup:
 
 Download the pkl file from https://www.kaggle.com/datasets/xblock/ethereum-phishing-transaction-network?resource=download
 (It is too large to upload to GitHub so to run the code locally, you will need to download it from Kaggle)
+https://arxiv.org/pdf/2203.12363.pdf
 
 '''
 
