@@ -25,6 +25,7 @@ def get_tx_hash(sender, receiver, date, amount):
         # if error is due to rate limit, wait 1 second and try again
         if 'credit' in response:
             error = True
+            tx_hash = []
         
 
     try:
@@ -71,5 +72,5 @@ def get_tx_hash(sender, receiver, date, amount):
         else:
             tx_hash = response['results'][0]['transaction_hash']
     except:
-        tx_hash = None
+        tx_hash = []
     return [tx_hash, error]

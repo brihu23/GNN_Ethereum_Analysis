@@ -7,7 +7,7 @@ import datetime
 from get_tx_hash import get_tx_hash
 from get_tx_hash_v2 import get_tx_hash_v2
 from extract_random_nodes import to_iso_time
-
+from get_tx_value_v2 import get_tx_value_v2
 
 '''
 To get setup:
@@ -18,18 +18,30 @@ https://arxiv.org/pdf/2203.12363.pdf
 
 '''
 
+
 def main():
+
+
     is_subgraph = True
+    nodes = 1000
+    maingraph_path = './MulDiGraph.pkl'
+    subgraph_save_path = './MulDiGraph_subgraph_2000final_backup.pkl'
+    subgraph_path = './MulDiGraph_subgraph_2000final_backup.pkl'
+    # preload_path = None
+    preload_path = './unique_senders_receivers.json'
+    skipLoading = True
+    create_overview_images = True
+
     def load_pickle(fname):
         with open(fname, 'rb') as f:
             return pickle.load(f)
-        
+
     
     # loading full dataset
     if not is_subgraph:
         print('Loading graph...')
         startTime = datetime.datetime.now()
-        G = load_pickle('./MulDiGraph.pkl')
+        G = load_pickle(maingraph_path)
         print('Pickle file loaded.')
         # overview(G)
         endTime = datetime.datetime.now()
@@ -38,16 +50,19 @@ def main():
     if is_subgraph:
         print('Loading subgraph...')
         startTime = datetime.datetime.now()
-        G = load_pickle('./MulDiGraph_subgraph_vTest.pkl')
+        G = load_pickle(subgraph_path)
         print('Prev Subgragh Pickle file loaded.')
-        overview(G)
+        overview(G, create_overview_images)
         endTime = datetime.datetime.now()
         print('Time taken to load the subgraph: ', endTime - startTime)
+        return
+
+
 
     # extracting random sample of nodes as done in paper
     startTime = datetime.datetime.now()
     print('Extracting and labeling random nodes...')
-    G_subgraph = extract_random_nodes_and_label(G, 5, 5, is_subgraph)
+    G_subgraph = extract_random_nodes_and_label(G, nodes, nodes, is_subgraph, preload_path, skipLoading)
     print('Random nodes extracted and labelled.')
     overview(G_subgraph)
     endTime = datetime.datetime.now()
@@ -55,12 +70,12 @@ def main():
     # save the subgraph
 
     startTime = datetime.datetime.now()
-    # print('Saving the subgraph...')
-    # # save graph as pickle file
-    # with open('./MulDiGraph_subgraph_vTest.pkl', 'wb') as f:
-    #     pickle.dump(G_subgraph, f)
-    # print('Subgraph saved.')
-    # print('Time taken to save the subgraph: ', endTime - startTime)
+    print('Saving the subgraph...')
+    # save graph as pickle file
+    with open(subgraph_save_path, 'wb') as f:
+        pickle.dump(G_subgraph, f)
+    print('Subgraph saved.')
+    print('Time taken to save the subgraph: ', endTime - startTime)
 
     endTime = datetime.datetime.now()
 

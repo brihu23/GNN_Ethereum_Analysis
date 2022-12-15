@@ -21,21 +21,25 @@ def get_tx_hash_v2(sender, receivers, latestTimestamp, earliestTimestamp):
         json_data['sql'] = json_data['sql'].replace('(\'0x23\', \'0x493\')', '(' + receivers_string + ')')
         
 
-
-        response = requests.post('https://api.transpose.io/sql', headers=headers, json=json_data)
-        response = response.json()
-        error = False
-        result = None
-        if (response['status'] == 'error'):
-            print('error: ', response)
-            # convert response to string
-            response = str(response)
-            # if error is due to rate limit, wait 1 second and try again
-            if 'credit' in response:
-                error = True
-        else:
-            result = response['results']
-
-        return [result, error]
+        try:
+            response = requests.post('https://api.transpose.io/sql', headers=headers, json=json_data)
+            response = response.json()
+            error = False
+            result = None
+            if (response['status'] == 'error'):
+                print('error: ', response)
+                # convert response to string
+                response = str(response)
+                # if error is due to rate limit, wait 1 second and try again
+                if 'credit' in response:
+                    error = True
+            else:
+                result = response['results']
+            
+            if result == None:
+                return [[], False]
+            return [result, error]
+        except:
+            return [[], True]
 
         
