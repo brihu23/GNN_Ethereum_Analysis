@@ -33,7 +33,7 @@ def overview(G, create_overview_images=False):
                     num_instances_tx_hash_is_none += 1
 
         labels_list = ['dex_accounts', 'gaming_accounts', 'wallet_app_accounts', 'cold_wallet_accounts', 'spam_token_deployer_accounts', 'token_contracts', 'tokenized_assets_contracts', 'dex_token_contracts', 'spam_token_contracts', 'gaming_token_contracts', 'wallet_app_token_contracts', 'account']
-        # create bar chart to show number of nodes by label with matplotlib.pyplot as plt and save to file, show the labels in a key and color the bars by label. Add a key to the graph
+        # create bar chart to show number of nodes by label with matplotlib.pyplot as plt and save to file, show the labels in a key and color the bars by label. Add a key to the graph. Labels are saved in the nodes one_hot_label attribute
         labels = []
         num_nodes = []
         for label in labels_list:
@@ -46,6 +46,7 @@ def overview(G, create_overview_images=False):
         plt.savefig('images/num_nodes_by_label.png')
     
         # heatmap of the number of edges between labels with numbers in each cell and save to file
+        
         labels = []
         num_nodes = []
         for label in labels_list:

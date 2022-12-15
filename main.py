@@ -30,7 +30,7 @@ def main():
     # preload_path = None
     preload_path = './unique_senders_receivers.json'
     skipLoading = True
-    create_overview_images = True
+    create_overview_images = False
 
     def load_pickle(fname):
         with open(fname, 'rb') as f:
@@ -55,7 +55,7 @@ def main():
         overview(G, create_overview_images)
         endTime = datetime.datetime.now()
         print('Time taken to load the subgraph: ', endTime - startTime)
-        return
+        
 
 
 
