@@ -34,10 +34,11 @@ pip3 install -r requirements.txt
     python3.10 main.py
     ```
     
+3. If you would ever like to not load the data and only modify the node features, set the **************************skip_loading************************** variable to TRUE
 
 # Loading our subgraph
 
-1. Download the subgraph here —> [https://drive.google.com/file/d/1wGclh1IlXdQ8_6Zz3bp6RurOkuxPj6c_/view?usp=sharing](https://drive.google.com/file/d/1wGclh1IlXdQ8_6Zz3bp6RurOkuxPj6c_/view?usp=sharing)
+1. Download the zipped subgraph here —>
     1. This subgraph was created from 200 fraudulent and 200 normal nodes and amplified with usd_values
 2. Set the ****************************subgraph_path**************************** to the file location of the unzipped pkl file from above
 3. Set the **is_subgraph** variable to TRUE at the top of the file
@@ -48,4 +49,18 @@ pip3 install -r requirements.txt
 python3.10 main.py
 ```
 
-# Running RGCN Model on Subgraph
+# Running Stats
+
+1. To run stats on a subgraph, set the ****create_overview_images**** variable to TRUE
+
+# Script
+
+The current configuration of the repo will load our preloaded JSON feature file and add them to the subgraph dataset and then display statistics of the subgraph. 
+
+1. Run the below snippet
+
+```bash
+python3.10 main.py
+```
+
+# Running an RGCN Model on Subgraph

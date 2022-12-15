@@ -13,7 +13,7 @@ def get_tx_hash(sender, receiver, date, amount):
     url = 'https://sql.transpose.io/'
     # post request with query as body  and api key
     headers = {
-        'x-api-key': '5fCQBV1mN5crtkEaqZXWzUnI0v8EqnSg',
+        'x-api-key': '0B2HufLSwgSbAzU6HSbU9gT1iBBSLyGo',
         'Content-Type': 'application/json',
     }
     response = requests.post(url, json=json_data, headers=headers).json()

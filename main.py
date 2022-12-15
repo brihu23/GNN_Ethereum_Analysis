@@ -28,8 +28,8 @@ def main():
     subgraph_save_path = './MulDiGraph_subgraph_2000final_backup.pkl'
     subgraph_path = './MulDiGraph_subgraph_2000final_backup.pkl'
     # preload_path = None
-    preload_path = './unique_senders_receivers.json'
-    skipLoading = True
+    preload_path = './unique_senders_receivers_values.json'
+    skipLoading = False
     create_overview_images = False
 
     def load_pickle(fname):
@@ -55,6 +55,7 @@ def main():
         overview(G, create_overview_images)
         endTime = datetime.datetime.now()
         print('Time taken to load the subgraph: ', endTime - startTime)
+  
         
 
 
